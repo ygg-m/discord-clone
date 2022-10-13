@@ -3,10 +3,7 @@ export {
   AiOutlinePlus as PlusIcon,
   AiOutlineSearch as SearchIcon,
 } from "react-icons/ai";
-export {
-  BiLogInCircle as LoginIcon,
-  BiLogOutCircle as LogoutIcon,
-} from "react-icons/bi";
+export { BiLogOutCircle as LogoutIcon } from "react-icons/bi";
 export { ImBubbles as ChatBubbleIcon } from "react-icons/im";
 // stream-chat
 export { Avatar, ChannelList, useChatContext } from "stream-chat-react";
