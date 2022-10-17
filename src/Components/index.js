@@ -19,4 +19,12 @@ export { EditChannel } from "./EditChannel";
 export { GroupChannelList } from "./GroupChannelList";
 export { GroupChannelPreview } from "./GroupChannelPreview";
 export { GroupMessage } from "./GroupMessage";
+// inputs
+export { InputAvatarURL } from "./InputAvatarURL";
+export { InputBirthdate } from "./InputBirthdate";
+export { InputEmail } from "./InputEmail";
+export { InputPassword } from "./InputPassword";
+export { InputPasswordConfirm } from "./InputPasswordConfirm";
+export { InputUsername } from "./InputUsername";
+// user list
 export { UserList } from "./UserList";
