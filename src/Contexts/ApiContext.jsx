@@ -2,9 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const ApiContext = createContext();
 
-export const useApi = () => {
-  return useContext(ApiContext);
-};
+export const useApi = () => useContext(ApiContext);
 
 export const ApiProvider = ({ children }) => {
   const [createType, setCreateType] = useState("");
@@ -18,5 +16,6 @@ export const ApiProvider = ({ children }) => {
     isEditing,
     setIsEditing,
   };
+
   return <ApiContext.Provider value={value}>{children}</ApiContext.Provider>;
 };
