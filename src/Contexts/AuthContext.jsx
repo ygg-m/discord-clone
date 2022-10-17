@@ -1,14 +1,15 @@
 import axios from "axios";
-import { createContext, useContext, useState, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import Cookie from "universal-cookie";
-import "./Style/auth.css";
+import "../Pages/Auth/Style/auth.css";
 
 const cookies = new Cookie();
 
+// context setup
 const AuthContext = createContext();
-
 export const useAuth = () => useContext(AuthContext);
 
+// initial state of auth form
 const initialState = {
   email: "",
   username: "",
@@ -68,7 +69,7 @@ export const AuthProvider = ({ children }) => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
   };
 
-  const value = { cookies };
+  const value = { switchMode, handleChange, handleSubmit, isSignup };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

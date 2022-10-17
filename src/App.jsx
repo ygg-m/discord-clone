@@ -10,6 +10,7 @@ import {
   ChannelListContainer,
 } from "./Components/index";
 
+import { AuthProvider } from "./Contexts/AuthContext";
 import "./Styles/index.css";
 
 const cookies = new Cookies();
@@ -36,7 +37,14 @@ export const App = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
-  if (!authToken) return <Auth />;
+  // If there's no login token, go to Auth page
+  if (!authToken)
+    return (
+      <AuthProvider>
+        <Auth />
+      </AuthProvider>
+    );
+
   return (
     <div className="app__wrapper">
       <ApiProvider>
