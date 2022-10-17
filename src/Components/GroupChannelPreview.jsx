@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, useChatContext } from "../index";
+import { Avatar, useChatContext } from "./index";
 
 export const GroupChannelPreview = ({ channel, type }) => {
   const { channel: activeChannel, client } = useChatContext();
@@ -19,10 +19,10 @@ export const GroupChannelPreview = ({ channel, type }) => {
       <div className="channel-preview__item single">
         <Avatar
           image={members[0]?.user?.image}
-          name={members[0]?.user?.fullName}
+          name={members[0]?.user?.email}
           size={24}
         />
-        <p>{members[0]?.user?.fullName}</p>
+        <p>{members[0]?.user?.email}</p>
       </div>
     );
   };

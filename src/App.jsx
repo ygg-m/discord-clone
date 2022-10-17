@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { StreamChat } from "stream-chat";
 import { Chat } from "stream-chat-react";
 import Cookies from "universal-cookie";
+import { ApiProvider } from "./Contexts/ApiContext";
+
 import {
   Auth,
   ChannelContainer,
   ChannelListContainer,
 } from "./Components/index";
+
+import "./Styles/index.css";
 
 const cookies = new Cookies();
 
@@ -21,21 +25,37 @@ if (authToken) {
       name: cookies.get("username"),
       image: cookies.get("avatarURL"),
       hashedPassword: cookies.get("hashedPassword"),
-      fullName: cookies.get("fullName"),
-      phoneNumber: cookies.get("phoneNumber"),
+      email: cookies.get("email"),
     },
     authToken
   );
 }
 
 export const App = () => {
+  const [createType, setCreateType] = useState("");
+  const [isCreating, setIsCreating] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+
   if (!authToken) return <Auth />;
   return (
     <div className="app__wrapper">
-      <Chat client={client}>
-        <ChannelListContainer />
-        <ChannelContainer />
-      </Chat>
+      <ApiProvider>
+        <Chat client={client}>
+          <ChannelListContainer
+            isCreating={isCreating}
+            setIsCreating={setIsCreating}
+            setCreateType={setCreateType}
+            setIsEditing={setIsEditing}
+          />
+          <ChannelContainer
+            isCreating={isCreating}
+            setIsCreating={setIsCreating}
+            isEditing={isEditing}
+            setIsEditing={setIsEditing}
+            createType={createType}
+          />
+        </Chat>
+      </ApiProvider>
     </div>
   );
 };

@@ -1,11 +1,15 @@
 import React from "react";
-import { PlusIcon } from "../index";
+import { PlusIcon } from "./index";
 
 export const GroupChannelList = ({
   children,
   error = false,
   loading,
   type,
+  isCreating,
+  setIsCreating,
+  setCreateType,
+  setIsEditing,
 }) => {
   if (error) {
     return type === "group" ? (
@@ -33,7 +37,16 @@ export const GroupChannelList = ({
         <p className="group-channel-list__header__title">
           {type === "group" ? "Channels" : "Direct Messages"}
         </p>
-        {/* TODO: button to add channel */}
+        <button
+          onClick={() => {
+            setCreateType(type);
+            setIsCreating((prevState) => !prevState);
+            setIsEditing(false);
+          }}
+          type={type === "group" ? "group" : "direct"}
+        >
+          <PlusIcon />
+        </button>
       </div>
       {children}
     </div>

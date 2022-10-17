@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SearchIcon, useChatContext } from "../index";
+import { SearchIcon, useChatContext } from "./index";
 
 export const ChannelSearch = () => {
   const [query, setQuery] = useState("");

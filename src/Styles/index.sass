@@ -1,0 +1,130 @@
+@use '_variables.sass' as v
+@use '_mixin.sass' as m
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+body
+    line-height: 1
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+    font-family: Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif
+
+    color: v.$white
+    background: v.$gray-3
+
+    width: 100vw
+    height: 100vh
+
+    @include m.flex-center
+
+input
+    width: 100%
+    border: none
+    padding: .7rem
+    border-radius: 3px
+
+    color: v.$text
+    background-color: v.$gray-1
+
+select
+    width: 100%
+    border: none
+    @include m.flex-center
+    padding: .7rem
+    border-radius: 3px
+
+    color: v.$text
+    background-color: v.$gray-1
+
+option
+    max-height: 5rem
+
+button
+    cursor: pointer
+    width: inherit
+    transition: .2s
+
+    border: none
+    padding: 1rem
+    border-radius: 3px
+
+    font-weight: bold
+    color: v.$white
+    background-color: v.$blurple
+
+    &:hover
+        background-color: v.$blurple-dark
+
+label
+    width: 100%
+    text-transform: uppercase
+    color: v.$gray-7
+    font:
+        size: .75rem
+        weight: bold
+
+// ignore browser autocomplete css
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus
+  -webkit-text-fill-color: v.$text
+  transition: background-color 5000s ease-in-out 0s
+
+
+// custom css classes
+.required
+    color: v.$red
+    font:
+        size: .75rem
+        weight: bold
+    margin-left: .25rem
+
+.link
+    cursor: pointer
+    transition: .2s
+    color: v.$link
+    
+    &:hover
+        text-decoration: underline
+
+// auth page
+.app__wrapper
+    display: flex
+    
+// channel list sidebar
+.channel-list__sidebar
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: .5rem
+
+    height: 100vh
+    padding: 1rem .5rem
+
+    background-color: v.$gray-1
+    
+    .channel-list__sidebar__icon
+        opacity: .6
+        transition: .2s
+
+        cursor: pointer
+        @include m.flex-center
+        font-size: 1.5rem
+        padding: .6rem
+        border-radius: 100%
+        
+        background-color: v.$gray-4
+
+        &:hover
+            opacity: 1
