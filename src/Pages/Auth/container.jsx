@@ -29,7 +29,9 @@ export const Auth = () => {
             {isSignup && <InputPasswordConfirm />}
             {isSignup && <InputBirthdate />}
             <div className="auth__form-container_fields-content_button">
-              <button>{isSignup ? "Sign Up" : "Sign In"}</button>
+              <button className="button">
+                {isSignup ? "Sign Up" : "Sign In"}
+              </button>
             </div>
           </form>
           <div className="auth__form-container_fields-account">

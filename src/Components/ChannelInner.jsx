@@ -1,20 +1,30 @@
 import React, { useState } from "react";
 import {
   Avatar,
+  Channel,
+  ChannelList,
+  Chat,
   MessageInput,
   MessageList,
   Thread,
   useChannelActionContext,
   useChannelStateContext,
   useChatContext,
+  VirtualizedMessageList,
   Window,
 } from "stream-chat-react";
+
+import { CustomMessage } from "./CustomMessage";
+
+import { AiOutlineEdit } from "react-icons/ai";
 
 export const GiphyContext = React.createContext({});
 
 export const ChannelInner = ({ setIsEditing }) => {
   const [giphyState, setGiphyState] = useState(false);
   const { sendMessage } = useChannelActionContext();
+  const { messages } = useChannelStateContext();
+  const { client } = useChatContext();
 
   const overrideSubmitHandler = (message) => {
     let updatedMessage = {
@@ -40,7 +50,7 @@ export const ChannelInner = ({ setIsEditing }) => {
       <div style={{ display: "flex", width: "100%" }}>
         <Window>
           <TeamChannelHeader setIsEditing={setIsEditing} />
-          <MessageList />
+          <MessageList Message={CustomMessage} />
           <MessageInput overrideSubmitHandler={overrideSubmitHandler} />
         </Window>
         <Thread />
@@ -52,6 +62,12 @@ export const ChannelInner = ({ setIsEditing }) => {
 const TeamChannelHeader = ({ setIsEditing }) => {
   const { channel, watcher_count } = useChannelStateContext();
   const { client } = useChatContext();
+
+  const getWatcherText = (watchers) => {
+    if (!watchers) return "No users online";
+    if (watchers === 1) return "1 user online";
+    return `${watchers} users online`;
+  };
 
   const MessagingHeader = () => {
     const members = Object.values(channel.state.members).filter(
@@ -86,40 +102,27 @@ const TeamChannelHeader = ({ setIsEditing }) => {
 
     return (
       <div className="team-channel-header__channel-wrapper">
-        <p className="team-channel-header__name"># {channel.data.name}</p>
-        <span style={{ display: "flex" }} onClick={() => setIsEditing(true)}>
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8.16602 6.49837H9.83269V4.83171H8.16602V6.49837ZM8.99936 15.665C5.32351 15.665 2.33268 12.6743 2.33268 8.99833C2.33268 5.32253 5.32351 2.33171 8.99936 2.33171C12.6752 2.33171 15.666 5.32253 15.666 8.99833C15.666 12.6743 12.6752 15.665 8.99936 15.665ZM8.99936 0.665039C4.39684 0.665039 0.666016 4.39587 0.666016 8.99833C0.666016 13.6009 4.39684 17.3317 8.99936 17.3317C13.6019 17.3317 17.3327 13.6009 17.3327 8.99833C17.3327 4.39587 13.6019 0.665039 8.99936 0.665039ZM8.16602 13.165H9.83269V8.165H8.16602V13.165Z"
-              fill="black"
-              fillOpacity="0.33"
-            />
-          </svg>
-        </span>
+        <p className="team-channel-header__name">
+          <span className="team-channel-header__name__tag">#</span>{" "}
+          {channel.data.name}
+          <span className="team-channel-header__right-text">
+            {getWatcherText(watcher_count)}
+          </span>
+        </p>
+        <div
+          className="team-channel-header__name__edit"
+          onClick={() => setIsEditing(true)}
+        >
+          <AiOutlineEdit />
+        </div>
       </div>
     );
-  };
-
-  const getWatcherText = (watchers) => {
-    if (!watchers) return "No users online";
-    if (watchers === 1) return "1 user online";
-    return `${watchers} users online`;
   };
 
   return (
     <div className="team-channel-header__container">
       <MessagingHeader />
-      <div className="team-channel-header__right">
-        <p className="team-channel-header__right-text">
-          {getWatcherText(watcher_count)}
-        </p>
-      </div>
+      <div className="team-channel-header__right"></div>
     </div>
   );
 };

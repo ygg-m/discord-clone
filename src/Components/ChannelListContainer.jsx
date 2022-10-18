@@ -10,16 +10,24 @@ import {
   useChatContext,
 } from "./index";
 
+import { BiChevronDown } from "react-icons/bi";
+
 const cookies = new Cookies();
 
 const SideBar = ({ logout }) => {
   return (
-    <div className="channel-list__sidebar">
-      <div className="channel-list__sidebar__icon">
-        <ChatBubbleIcon />
+    <div className="sidebar__wrapper">
+      <div className="channel-list__sidebar">
+        <div className="channel-list__sidebar__icon">
+          <ChatBubbleIcon />
+        </div>
+        <div className="channel-list__sidebar__icon">
+          <LogoutIcon onClick={logout} />
+        </div>
       </div>
-      <div className="channel-list__sidebar__icon">
-        <LogoutIcon onClick={logout} />
+      <div className="user-info__wrapper">
+        {/* <ChannelSearch /> */}
+        <div className="user-info"></div>
       </div>
     </div>
   );
@@ -28,7 +36,8 @@ const SideBar = ({ logout }) => {
 const ChannelHeader = () => {
   return (
     <div className="channel-list__header">
-      <p className="channel-list__header__text">First Channel</p>
+      <p className="channel-list__header__text">Group Channels</p>
+      <BiChevronDown className="channel-list__header__icon" />
     </div>
   );
 };
@@ -54,7 +63,6 @@ export const ChannelListContainer = ({
       <SideBar logout={logout} />
       <div className="channel-list_list__wrapper">
         <ChannelHeader />
-        <ChannelSearch />
         {/* group messages */}
         <ChannelList
           filters={{}}

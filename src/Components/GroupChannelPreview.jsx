@@ -6,7 +6,8 @@ export const GroupChannelPreview = ({ channel, type }) => {
 
   const ChannelPreview = () => {
     <p className="channel-preview__item">
-      # {channel?.data?.name || channel?.data?.id}
+      <span className="channel-preview__hashtag">#</span>{" "}
+      {channel?.data?.name || channel?.data?.id}
     </p>;
   };
 

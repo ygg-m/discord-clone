@@ -15,7 +15,7 @@ body
     font-family: Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif
 
     color: v.$white
-    background: v.$gray-3
+    background: v.$gray-1
 
     width: 100vw
     height: 100vh
@@ -44,26 +44,10 @@ select
 option
     max-height: 5rem
 
-button
-    cursor: pointer
-    width: inherit
-    transition: .2s
-
-    border: none
-    padding: 1rem
-    border-radius: 3px
-
-    font-weight: bold
-    color: v.$white
-    background-color: v.$blurple
-
-    &:hover
-        background-color: v.$blurple-dark
-
 label
     width: 100%
     text-transform: uppercase
-    color: v.$gray-7
+    color: v.$gray-8
     font:
         size: .75rem
         weight: bold
@@ -98,8 +82,25 @@ select:-webkit-autofill:focus
     &:hover
         text-decoration: underline
 
+.button
+    cursor: pointer
+    width: inherit
+    transition: .2s
+
+    border: none
+    padding: 1rem
+    border-radius: 3px
+
+    font-weight: bold
+    color: v.$white
+    background-color: v.$blurple
+
+    &:hover
+        background-color: v.$blurple-dark
+
 // auth page
 .app__wrapper
+    width: 100vw
     display: flex
     
 // channel list sidebar
@@ -128,3 +129,273 @@ select:-webkit-autofill:focus
 
         &:hover
             opacity: 1
+
+// channel list
+.channel-list_list__wrapper
+    min-width: 20%
+    background-color: v.$gray-3
+    border-radius: .5rem 0 0 0
+
+    .channel-list__header
+        height: 48px
+        padding: 0 1rem
+        border-radius: 1rem 0 0 0
+        display: flex
+        align-items: center
+        justify-content: space-between
+        border-bottom: 2px solid v.$gray-2
+        
+
+        .channel-list__header__text
+            @include m.flex-center
+
+        .channel-list__header__icon
+            font:
+                size: 1.5rem
+
+    .channel-search__input__wrapper
+        position: relative
+
+        .channel-search__input__icon
+            @include m.flex-center
+            height: 100%
+            border-left: 1px solid v.$gray-3
+            padding: 1rem
+            position: absolute
+            right: 0
+            margin: auto 0
+
+        .channel-search__input__text
+            &:focus-visible
+                outline: solid 1px v.$gray-6
+
+// channel container
+.channel__container
+    width: 100%
+    background-color: v.$gray-4
+
+    .str-chat__main-panel
+        height: 100vh
+        width: 100%
+
+    .team-channel-header__channel-wrapper
+        display: flex
+        align-items: center
+        justify-content: space-between
+        height: 48px
+        padding: 0 1rem
+        border-bottom: 2px solid v.$gray-2
+
+
+    .team-channel-header__name
+        @include m.flex-center
+        gap: 1rem
+        user-select: none
+
+        .team-channel-header__name__tag
+            font:
+                size: 2rem
+                weight: 200
+            color: v.$gray-7
+    
+    .team-channel-header__name__edit
+        font-size: 1.2rem
+        border-radius: .5rem
+        padding: .3rem
+        cursor: pointer
+        transition: 200ms
+
+        &:hover
+            background-color: v.$gray-6
+
+    .team-channel-header__right-text
+        color: v.$gray-7
+        font-style: italic
+
+        &::before
+            content: '|'
+            color: v.$gray-6
+            margin-right: 1rem
+            display: inline-block
+
+    .str-chat__list
+        padding: 1rem
+
+    .str-chat__date-separator
+        @include m.flex-center
+        position: relative
+
+        .str-chat__date-separator-line
+            position: absolute
+            border: none
+            width: 100%
+            height: 1px
+            background-color: v.$gray-6
+
+        .str-chat__date-separator-date
+            z-index: 1
+            color: v.$gray-7
+            text-transform: capitalize
+            padding: 0 .5rem
+            font:
+                style: italic
+                size: .75rem
+
+            background-color: v.$gray-4
+
+    .str-chat__message--deleted-inner
+        color: v.$gray-7
+        font:
+            style: italic
+            size: .75rem
+            
+        padding: .2rem 0
+
+    .str-chat__ul
+        list-style-type: none
+
+     // message
+.str-chat__li 
+    margin: 0
+    padding: 15px
+    position: relative
+
+    &:hover 
+        background: rgba(0, 0, 0, 0.03)
+        .str-chat__message-text-inner 
+            background: rgba(0, 0, 0, 0)
+        
+    
+
+
+.message-wrapper 
+    display: flex
+
+    &-content 
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        width: 100%
+    
+
+
+.message-header 
+    display: flex
+
+    &-name 
+        font-family: Helvetica Neue, sans-serif
+        font-weight: 500
+        font-size: 11px
+        line-height: 120%
+        color: #858688
+    
+
+    &-timestamp 
+        font-family: Helvetica Neue, sans-serif
+        font-size: 11px
+        line-height: 120%
+        color: #858688
+        margin-left: 6px
+    
+
+
+.str-chat__li:hover .str-chat__message-simple__actions 
+    position: absolute
+    top: -14px
+    right: 20px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    height: 24px
+    border-radius: 100px
+    background: white
+    border: 1px solid #e0e0e0
+    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.07)
+    z-index: 1
+    padding: 0 4px 0
+
+    &__action--reactions 
+        display: flex
+    
+
+    &__action--options 
+        display: flex
+    
+
+    &__action--thread 
+        display: flex
+    
+
+
+.str-chat__message-simple__actions 
+    margin-top: 0
+
+
+.str-chat__message-actions-box 
+    top: initial
+    left: -100px
+    border-radius: 16px 16px 0 16px
+
+
+.str-chat__message-text 
+    display: flex
+    width: 100%
+
+
+.str-chat__message-text-inner 
+    position: relative
+    flex: 1
+    display: block
+    min-height: 32px
+    font-size: 15px
+    color: black
+    border-radius: 0
+    border: 0
+    margin-left: 0
+
+    p 
+        font-family: Helvetica Neue, sans-serif
+        font-size: 15px
+        line-height: 18px
+        color: #000000
+        margin-bottom: 0
+    
+
+
+.str-chat__message-replies-count-button 
+    font-family: Helvetica Neue, sans-serif
+    font-weight: bold
+    font-size: 13px
+    text-align: right
+    color: #4e1d9d
+
+
+.str-chat__simple-reactions-list 
+    border-radius: 10px
+
+
+.str-chat__reaction-selector 
+    max-height: 40px
+    top: -58px
+    right: 20px
+    border-radius: 20px
+    background: white
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15)
+    border: 1px solid #bed5e4
+
+
+.str-chat__message-reactions-list-item__count 
+    color: #000000
+
+
+.str-chat__message-simple-status 
+    right: 22px
+
+
+.quoted-message-inner 
+    margin-top: 10px
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15)
+
+
+.str-chat__li .quoted-message.mine .quoted-message-inner 
+    background: #ebebeb
