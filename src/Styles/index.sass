@@ -254,148 +254,131 @@ select:-webkit-autofill:focus
     .str-chat__ul
         list-style-type: none
 
-     // message
-.str-chat__li 
+// message
+.str-chat__li
     margin: 0
     padding: 15px
     position: relative
 
-    &:hover 
-        background: rgba(0, 0, 0, 0.03)
-        .str-chat__message-text-inner 
+    &:hover
+        background: rgba(0, 0, 0, 0.06)
+        .str-chat__message-text-inner
             background: rgba(0, 0, 0, 0)
-        
-    
 
-
-.message-wrapper 
-    display: flex
-
-    &-content 
+    .message-wrapper
         display: flex
-        flex-direction: column
-        align-items: flex-start
-        width: 100%
+
+        &-content
+            display: flex
+            flex-direction: column
+            align-items: flex-start
+            width: 100%
+
+            .message-header
+                display: flex
+
+                &-name 
+                    font-family: Helvetica Neue, sans-serif
+                    font-weight: 500
+                    font-size: 11px
+                    line-height: 120%
+                    color: #858688
+
+                &-timestamp 
+                    font-family: Helvetica Neue, sans-serif
+                    font-size: 11px
+                    line-height: 120%
+                    color: #858688
+                    margin-left: 6px
     
+            .str-chat__message-simple__actions 
+                position: absolute
+                top: -14px
+                right: 20px
+                display: flex
+                align-items: center
+                justify-content: space-between
+                height: 24px
+                border-radius: .25rem
+                background: v.$gray-4
+                outline: 1px solid v.$gray-2
+                z-index: 1
+                padding: 0 4px 0
 
+                &:hover
+                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3)
 
-.message-header 
-    display: flex
+                &__action--reactions 
+                    display: flex
+                
 
-    &-name 
-        font-family: Helvetica Neue, sans-serif
-        font-weight: 500
-        font-size: 11px
-        line-height: 120%
-        color: #858688
-    
+                &__action--options 
+                    display: flex
+              
 
-    &-timestamp 
-        font-family: Helvetica Neue, sans-serif
-        font-size: 11px
-        line-height: 120%
-        color: #858688
-        margin-left: 6px
-    
+                &__action--thread 
+                    display: flex
 
+                .str-chat__message-actions-box-button
+                    width: 1.1rem
+                    height: 1rem
+                    background: none
+                    border: none
+                    cursor: pointer
 
-.str-chat__li:hover .str-chat__message-simple__actions 
-    position: absolute
-    top: -14px
-    right: 20px
-    display: flex
-    align-items: center
-    justify-content: space-between
-    height: 24px
-    border-radius: 100px
-    background: white
-    border: 1px solid #e0e0e0
-    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.07)
-    z-index: 1
-    padding: 0 4px 0
+                    &:hover
+                        background: v.$gray-6
+                    svg
+                        height: inherit
+                        width: inherit
+                        filter: invert(75%) sepia(5%) saturate(232%) hue-rotate(175deg) brightness(87%) contrast(93%)
+                        
+                        &:hover
+                            filter: invert(88%) sepia(8%) saturate(88%) hue-rotate(177deg) brightness(86%) contrast(86%)
 
-    &__action--reactions 
-        display: flex
-    
+                .str-chat__message-reply-in-thread-button
+                    width: 1.5rem
+                    height: 1rem
+                    background: none
+                    border: none
+                    cursor: pointer
 
-    &__action--options 
-        display: flex
-    
+                    &:hover
+                        background: v.$gray-6
 
-    &__action--thread 
-        display: flex
-    
+                    svg
+                        height: 1rem
+                        width: 1.5rem
+                        filter: invert(75%) sepia(5%) saturate(232%) hue-rotate(175deg) brightness(87%) contrast(93%)
 
+                
+                .str-chat__message-actions-box
+                    width: fit-content
+                    // display: none
+                    opacity: .1
 
-.str-chat__message-simple__actions 
-    margin-top: 0
+                    .str-chat__message-actions-list
+                        min-width: 12rem
+                        padding: .5rem
+                        border-radius: .3rem
+                        display: flex
+                        flex-direction: column
+                        position: absolute
+                        right: 5rem
+                        background: v.$gray-1
+                        gap: .15rem
 
+                        &-item
+                            text-align: start
+                            padding: .5rem 1rem 
+                            color: v.$gray-7
+                            border-radius: .15rem
+                            cursor: pointer
+                            background: none
+                            border: none
 
-.str-chat__message-actions-box 
-    top: initial
-    left: -100px
-    border-radius: 16px 16px 0 16px
+                            &:hover
+                                color: v.$white
+                                background: v.$blurple
+                                
 
-
-.str-chat__message-text 
-    display: flex
-    width: 100%
-
-
-.str-chat__message-text-inner 
-    position: relative
-    flex: 1
-    display: block
-    min-height: 32px
-    font-size: 15px
-    color: black
-    border-radius: 0
-    border: 0
-    margin-left: 0
-
-    p 
-        font-family: Helvetica Neue, sans-serif
-        font-size: 15px
-        line-height: 18px
-        color: #000000
-        margin-bottom: 0
-    
-
-
-.str-chat__message-replies-count-button 
-    font-family: Helvetica Neue, sans-serif
-    font-weight: bold
-    font-size: 13px
-    text-align: right
-    color: #4e1d9d
-
-
-.str-chat__simple-reactions-list 
-    border-radius: 10px
-
-
-.str-chat__reaction-selector 
-    max-height: 40px
-    top: -58px
-    right: 20px
-    border-radius: 20px
-    background: white
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15)
-    border: 1px solid #bed5e4
-
-
-.str-chat__message-reactions-list-item__count 
-    color: #000000
-
-
-.str-chat__message-simple-status 
-    right: 22px
-
-
-.quoted-message-inner 
-    margin-top: 10px
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15)
-
-
-.str-chat__li .quoted-message.mine .quoted-message-inner 
-    background: #ebebeb

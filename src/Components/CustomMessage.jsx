@@ -3,8 +3,8 @@ import {
   Attachment,
   Avatar,
   messageHasReactions,
-  MessageOptions,
   MessageRepliesCountButton,
+  // MessageOptions,
   MessageStatus,
   MessageText,
   MessageTimestamp,
@@ -12,6 +12,8 @@ import {
   SimpleReactionsList,
   useMessageContext,
 } from "stream-chat-react";
+
+import { MessageOptions } from "./Message/MessageOptions";
 
 export const CustomMessage = () => {
   const {
@@ -28,15 +30,20 @@ export const CustomMessage = () => {
 
   return (
     <div className="message-wrapper">
-      <Avatar className="message-avatar" image={message.user?.image} />
+      <Avatar
+        size={48}
+        className="message-avatar"
+        image={message.user?.image}
+      />
       <div className="message-wrapper-content">
-        <MessageOptions messageWrapperRef={messageWrapperRef} />
         <div className="message-header">
           <div className="message-header-name">{message.user?.name}</div>
           <div className="message-header-timestamp">
             <MessageTimestamp />
           </div>
         </div>
+        <MessageOptions messageWrapperRef={messageWrapperRef} />
+
         {showDetailedReactions && isReactionEnabled && (
           <ReactionSelector ref={reactionSelectorRef} />
         )}
