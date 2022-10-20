@@ -15,7 +15,7 @@ import {
 } from "stream-chat-react";
 
 import { AiOutlineEdit } from "react-icons/ai";
-import { CustomMessage } from "./CustomMessage";
+import { CustomMessage } from "./Message/container";
 
 export const GiphyContext = React.createContext({});
 
