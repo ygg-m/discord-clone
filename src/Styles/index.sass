@@ -441,6 +441,10 @@ select:-webkit-autofill:focus
 
 
         .str-chat__attachment-list
+            display: flex
+            flex-direction: column
+            gap: .5rem
+
             .str-chat__message-attachment
                 max-height: 10rem
 
@@ -509,7 +513,6 @@ select:-webkit-autofill:focus
                         &:hover
                             background-color: v.$gray-7
                             opacity: 1
-                            
 
                     &::before
                         content: ''
@@ -536,12 +539,26 @@ select:-webkit-autofill:focus
                             .str-chat__audio__image--button
                                 dislay: flex
                                 align-items: center
-                                svg
-                                    filter: invert(39%) sepia(45%) saturate(5248%) hue-rotate(224deg) brightness(99%) contrast(92%);
-
-
-
                         
+                .str-chat__message-attachment-file--item
+                    display: flex
+                    align-items: center
+                    gap: .5rem
+                    max-width: fit-content
+                    background-color: v.$gray-2
+                    padding: .5rem
+                    border-radius: 6px
+
+                    .str-chat__message-attachment-file--item-text
+                        display: flex
+                        align-items: flex-end
+                        gap: .5rem
+                        a
+                            color: v.$link
+                        span
+                            font-size: .75rem
+                            color: v.$gray-7
+
                             
     &:hover
         .message-options

@@ -445,6 +445,11 @@ select:-webkit-autofill:focus {
 .message-wrapper .content .str-chat__message-status {
   display: none;
 }
+.message-wrapper .content .str-chat__attachment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 .message-wrapper .content .str-chat__attachment-list .str-chat__message-attachment {
   max-height: 10rem;
 }
@@ -539,6 +544,29 @@ select:-webkit-autofill:focus {
 .message-wrapper .content .str-chat__attachment-list .str-chat__message-attachment .str-chat__audio__image--overlay .str-chat__audio__image--button {
   dislay: flex;
   align-items: center;
+}
+.message-wrapper .content .str-chat__attachment-list .str-chat__message-attachment .str-chat__message-attachment-file--item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  background-color: #202825;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+.message-wrapper .content .str-chat__attachment-list .str-chat__message-attachment .str-chat__message-attachment-file--item .str-chat__message-attachment-file--item-text {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+.message-wrapper .content .str-chat__attachment-list .str-chat__message-attachment .str-chat__message-attachment-file--item .str-chat__message-attachment-file--item-text a {
+  color: #00AFF4;
+}
+.message-wrapper .content .str-chat__attachment-list .str-chat__message-attachment .str-chat__message-attachment-file--item .str-chat__message-attachment-file--item-text span {
+  font-size: 0.75rem;
+  color: #A3A6AA;
 }
 .message-wrapper:hover .message-options {
   display: flex;
