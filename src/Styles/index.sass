@@ -444,6 +444,26 @@ select:-webkit-autofill:focus
             .str-chat__message-attachment
                 max-height: 10rem
 
+                .str-chat__gallery
+                    max-height: inherit
+                    display: flex
+                    gap: 1rem
+
+                    &-image
+                        cursor: pointer
+                        background-color: transparent
+                        border: none
+                        max-width: 100px
+
+                        img
+                            border-radius: 6px
+                            height: 100% !important
+                            object-fit: contain
+
+                        img:not(first-child)
+                            outline: 3px solid v.$gray-2
+
+
                 .str-chat__message-attachment--img
                     border-radius: 6px
                     max-height: inherit
@@ -461,7 +481,6 @@ select:-webkit-autofill:focus
                     justify-content: center
 
                     .str-chat__modal__inner
-
                         .image-gallery-fullscreen-button
                             display: none
                             background-color: v.$gray-7
@@ -500,6 +519,30 @@ select:-webkit-autofill:focus
                         z-index: -1
                         background-color: rgb(0,0,0,.6)
 
+                .str-chat__audio
+                    &__wrapper
+                        max-width: fit-content
+                        border-radius: 6px
+                        overflow: hidden
+                        display: flex
+                        align-items: center
+                        background-color: v.$gray-2
+
+                        .str-chat__audio__content
+                            padding: 0 1rem
+
+                    &__image
+                        &--overlay
+                            .str-chat__audio__image--button
+                                dislay: flex
+                                align-items: center
+                                svg
+                                    filter: invert(39%) sepia(45%) saturate(5248%) hue-rotate(224deg) brightness(99%) contrast(92%);
+
+
+
+                        
+                            
     &:hover
         .message-options
             display: flex
