@@ -285,6 +285,9 @@ select:-webkit-autofill:focus
                 font-size: .75rem
                 color: v.$gray-7
 
+        .str-chat__message-text
+            padding-bottom: .5rem
+
         .message-options
             position: absolute
             right: 1rem
@@ -388,21 +391,38 @@ select:-webkit-autofill:focus
                 display: flex
                 gap: .25rem
 
-                &-tooltip
-                    position: absolute
-                    
-
                 &-item
+                    position: relative
                     cursor: pointer
-                    padding: .2rem .5rem
-                    background-color: v.$gray-3
-                    border-radius: 4px
-                    &:hover
-                        outline: 1px solid v.$gray-6
+                    max-height: 26px
                     .emoji-mart-emoji
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        padding: .3rem .5rem
+                        background-color: v.$gray-3
+                        border-radius: 4px
+                        &:hover
+                            outline: 1px solid v.$gray-6
                         span
                             height: 1rem !important
                             width: 1rem !important
+
+                    .str-chat__simple-reactions-list-tooltip
+                        order: 1
+                        z-index: 10
+                        position: absolute
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        border-radius: 3px
+                        width: fit-content
+                        bottom: calc(-100% - .6rem)
+                        left: 0
+                        right: 0
+                        margin: 0 auto
+                        padding: .5rem .5rem
+                        background-color: v.$gray-2
 
                     &--last-number
                         display: flex
@@ -416,132 +436,73 @@ select:-webkit-autofill:focus
                             cursor: default
                             background-color: v.$gray-3
 
+        .str-chat__message-status
+            display: none
+
+
+        .str-chat__attachment-list
+            .str-chat__message-attachment
+                max-height: 10rem
+
+                .str-chat__message-attachment--img
+                    border-radius: 6px
+                    max-height: inherit
+                    object-fit: contain
+
+                .str-chat__modal
+                    z-index: 100
+                    position: fixed
+                    top: 0
+                    left: 0
+                    width: 100vw
+                    height: 100vh
+                    display: flex
+                    align-items: center
+                    justify-content: center
+
+                    .str-chat__modal__inner
+
+                        .image-gallery-fullscreen-button
+                            display: none
+                            background-color: v.$gray-7
+                            border: none
+                            padding: .3rem
+                            border-radius: 6px
+                            svg
+                                width: 1.3rem
+
+                    .str-chat__modal__close-button
+                        cursor: pointer
+                        position: absolute
+                        top: 1rem
+                        right: 1rem
+                        padding: .6rem 1rem
+                        border-radius: 6px
+                        background-color: v.$gray-7
+                        outline: 1px solid v.$gray-8
+                        opacity: .8
+                        display: flex
+                        gap: .5rem
+                        align-items: center
+                        justify-content: center
+                        border: none
+
+                        &:hover
+                            background-color: v.$gray-7
+                            opacity: 1
                             
 
-
-
+                    &::before
+                        content: ''
+                        position: fixed
+                        width: 100%
+                        height: 100%
+                        z-index: -1
+                        background-color: rgb(0,0,0,.6)
 
     &:hover
         .message-options
             display: flex
             .str-chat__message-simple__actions__action
                 .str-chat__message-actions-box
-
-
-
-
     
-    &-content
-        display: flex
-        flex-direction: column
-        align-items: flex-start
-        width: 100%
-
-        .message-header
-            display: flex
-
-            &-name 
-                font-family: Helvetica Neue, sans-serif
-                font-weight: 500
-                font-size: 11px
-                line-height: 120%
-                color: #858688
-
-            &-timestamp 
-                font-family: Helvetica Neue, sans-serif
-                font-size: 11px
-                line-height: 120%
-                color: #858688
-                margin-left: 6px
-
-        .str-chat__message-simple__actions 
-            position: absolute
-            top: -14px
-            right: 20px
-            display: flex
-            align-items: center
-            justify-content: space-between
-            height: 24px
-            border-radius: .25rem
-            background: v.$gray-4
-            outline: 1px solid v.$gray-2
-            z-index: 1
-            padding: 0 4px 0
-
-            &:hover
-                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3)
-
-            &__action--reactions 
-                display: flex
-            
-
-            &__action--options 
-                display: flex
-            
-
-            &__action--thread 
-                display: flex
-
-            .str-chat__message-actions-box-button
-                width: 1.1rem
-                height: 1rem
-                background: none
-                border: none
-                cursor: pointer
-
-                &:hover
-                    background: v.$gray-6
-                svg
-                    height: inherit
-                    width: inherit
-                    filter: invert(75%) sepia(5%) saturate(232%) hue-rotate(175deg) brightness(87%) contrast(93%)
-                    
-                    &:hover
-                        filter: invert(88%) sepia(8%) saturate(88%) hue-rotate(177deg) brightness(86%) contrast(86%)
-
-            .str-chat__message-reply-in-thread-button
-                width: 1.5rem
-                height: 1rem
-                background: none
-                border: none
-                cursor: pointer
-
-                &:hover
-                    background: v.$gray-6
-
-                svg
-                    height: 1rem
-                    width: 1.5rem
-                    filter: invert(75%) sepia(5%) saturate(232%) hue-rotate(175deg) brightness(87%) contrast(93%)
-
-            
-            .str-chat__message-actions-box
-                width: fit-content
-                // display: none
-                opacity: .1
-
-                .str-chat__message-actions-list
-                    min-width: 12rem
-                    padding: .5rem
-                    border-radius: .3rem
-                    display: flex
-                    flex-direction: column
-                    position: absolute
-                    right: 5rem
-                    background: v.$gray-1
-                    gap: .15rem
-
-                    &-item
-                        text-align: start
-                        padding: .5rem 1rem 
-                        color: v.$gray-7
-                        border-radius: .15rem
-                        cursor: pointer
-                        background: none
-                        border: none
-
-                        &:hover
-                            color: v.$white
-                            background: v.$blurple
-                            
-
