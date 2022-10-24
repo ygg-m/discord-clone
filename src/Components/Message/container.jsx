@@ -8,12 +8,13 @@ import {
   MessageStatus,
   MessageText,
   MessageTimestamp,
-  ReactionSelector,
+  ReactionSelector as APIReactionSelector,
   SimpleReactionsList,
   useMessageContext,
 } from "stream-chat-react";
 
 import { MessageOptions } from "./MessageOptions";
+import { ReactionSelector } from "./ReactionSelector";
 
 export const CustomMessage = () => {
   const {
@@ -28,13 +29,11 @@ export const CustomMessage = () => {
   const hasReactions = messageHasReactions(message);
   const hasAttachments = message.attachments && message.attachments.length > 0;
 
+  const customReactions = [];
+
   return (
     <div className="message-wrapper">
-      <Avatar
-        size={48}
-        className="avatar"
-        image={message.user?.image}
-      />
+      <Avatar size={48} className="avatar" image={message.user?.image} />
       <div className="content">
         <div className="header">
           <div className="name">{message.user?.name}</div>
@@ -45,7 +44,11 @@ export const CustomMessage = () => {
         <MessageOptions messageWrapperRef={messageWrapperRef} />
 
         {showDetailedReactions && isReactionEnabled && (
-          <ReactionSelector ref={reactionSelectorRef} />
+          <>
+            <APIReactionSelector />
+            {/* <ReactionSelector /> */}
+            {/* <APIReactionSelector ref={reactionSelectorRef} /> */}
+          </>
         )}
         <MessageText />
         <MessageStatus />
