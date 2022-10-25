@@ -546,7 +546,7 @@ select:-webkit-autofill:focus
                     gap: .5rem
                     max-width: fit-content
                     background-color: v.$gray-2
-                    padding: .5rem
+                    padding: .5rem 1rem .5rem .5rem
                     border-radius: 6px
 
                     .str-chat__message-attachment-file--item-text
@@ -554,7 +554,11 @@ select:-webkit-autofill:focus
                         align-items: flex-end
                         gap: .5rem
                         a
+                            text-decoration: none
                             color: v.$link
+                            &:hover
+                                text-decoration: underline
+                                
                         span
                             font-size: .75rem
                             color: v.$gray-7

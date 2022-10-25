@@ -553,7 +553,7 @@ select:-webkit-autofill:focus {
   max-width: -moz-fit-content;
   max-width: fit-content;
   background-color: #202825;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
   border-radius: 6px;
 }
 .message-wrapper .content .str-chat__attachment-list .str-chat__message-attachment .str-chat__message-attachment-file--item .str-chat__message-attachment-file--item-text {
@@ -562,7 +562,11 @@ select:-webkit-autofill:focus {
   gap: 0.5rem;
 }
 .message-wrapper .content .str-chat__attachment-list .str-chat__message-attachment .str-chat__message-attachment-file--item .str-chat__message-attachment-file--item-text a {
+  text-decoration: none;
   color: #00AFF4;
+}
+.message-wrapper .content .str-chat__attachment-list .str-chat__message-attachment .str-chat__message-attachment-file--item .str-chat__message-attachment-file--item-text a:hover {
+  text-decoration: underline;
 }
 .message-wrapper .content .str-chat__attachment-list .str-chat__message-attachment .str-chat__message-attachment-file--item .str-chat__message-attachment-file--item-text span {
   font-size: 0.75rem;
