@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
       birthdateMonth,
       birthdateYear,
     } = form;
-    const URL = "http://localhost:5000/auth";
+    const URL = "https://ygg-discord-clone.herokuapp.com/auth";
     const {
       data: { token, userID, hashedPassword, email },
     } = await axios.post(`${URL}/${isSignup ? "signup" : "login"}`, {
